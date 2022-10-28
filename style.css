@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+:root{
+    --primary:#2C2A4A;
+    --secondary:#4F518C;
+    --font-color:#fff;
+}
+
+body{
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Nav */
+
+.title{
+    padding: 1rem;
+    color: var(--font-color);
+    
+}
+
+header{
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary);
+    width: 100vw;
+    position: -webkit-sticky;
+}
+
+#search{
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    color:var(--font-color);
+    margin: 1rem;
+}
+
+#search:focus{
+    outline: 0;
+    background-color: var(--primary);
+    transition: 0.2s;
+    transform:scale(1.1);
+}
+
+#search::placeholder{
+    color: var(--font-color);
+    opacity: 0.5;
+}
+
+/* Main */
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 1rem 0 0 0;
+}
+
+/* Movie cards */
+
+.movie{
+    width: 300px;
+    background-color: var(--secondary);
+    box-shadow: 0.2px 5px 6px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie img{
+    width: 100%;
+}
+
+.movie-info{
+    color: var(--font-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem 1rem ;
+}
+
+.movie-info h3{
+    margin-top: 0;
+}
+
+.movie-info span{
+    background-color: var(--primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.movie-info span.green{
+    color: lightgreen;
+}
+.movie-info span.orange{
+    color: lightsalmon;
+}
+.movie-info span.red{
+    color: lightcoral;
+}
+
+/* overview del card */
+
+.overview{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--font-color);
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: all 0.3s ease-in;
+    font-size: small;
+    overflow: scroll;
+}
+
+.movie:hover .overview{
+    transform: translateY(0);
+}
+
+#tags{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.tag{
+    padding: 1rem;
+    margin: 1rem;
+    user-select: none;
+    transition: all .2s;
+    color: var(--font-color);
+    background-color: #4f598c;
+    border-radius: 15px;
+}
+
+.tag:hover{
+    cursor: pointer;
+    background-color: var(--secondary);
+    transform: scale(1.1);
+}
+
+.selected{
+    background-color: black;
+    transform: scale(1.1);
+}
