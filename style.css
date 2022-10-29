@@ -323,6 +323,6 @@ main {
   }
 
   .tag:hover{
-    transform: scale(1);
+    transform: none
   }
 }
