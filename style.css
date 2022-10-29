@@ -32,7 +32,7 @@ body {
 header {
   padding: 1rem 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: var(--secondary);
   width: 100vw;
@@ -43,6 +43,8 @@ header {
   text-decoration: none;
   color: var(--font-color);
   transition: all 0.2s;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .logo:hover {
@@ -52,7 +54,7 @@ header {
 #search {
   background-color: transparent;
   border: 2px solid var(--primary);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .5rem;
   border-radius: 50px;
   font-size: 1rem;
   color: var(--font-color);
@@ -69,6 +71,32 @@ header {
 #search::placeholder {
   color: var(--font-color);
   opacity: 0.5;
+}
+
+/* CategoryTitle */
+.genreTitle{
+  background-color: var(--secondary);
+  padding: .5rem;
+  border-radius: 0 0 15px 15px;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.genreTitle i{
+  color: var(--font-color);
+  font-size: 30px;
+  cursor: pointer;
+  background-color: var(--primary);
+  padding: .5rem;
+  border-radius: 50%;
+  transition: all .2s;
+}
+
+.genreTitle i:hover{
+  transform: scale(1.1);
 }
 
 /* Main */
@@ -159,7 +187,7 @@ main {
 
 #tags {
   width: 100vw;
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
@@ -173,12 +201,17 @@ main {
   color: var(--font-color);
   background-color: #4f598c;
   border-radius: 15px;
+  display: flex;
 }
 
 .tag:hover {
   cursor: pointer;
   background-color: var(--secondary);
   transform: scale(1.2);
+}
+
+#genreHide{
+  display: none;
 }
 
 .selected {
@@ -275,5 +308,13 @@ main {
     font-size: 40px;
     top: 15px;
     right: 35px;
+  }
+
+  #tags{
+    flex-direction: column;
+  }
+
+  .logo{
+    font-size: 1rem;
   }
 }

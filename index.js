@@ -12,6 +12,8 @@ const form = document.getElementById("form");
 const search = document.getElementById("search");
 const title = document.querySelector(".title");
 const tags = document.getElementById("tags");
+const genreShow = document.getElementById('genreShow')
+const tag = document.getElementsByClassName('tag')
 
 //Paginador
 const prev = document.getElementById("prev");
@@ -36,7 +38,7 @@ function setGenre() {
   tags.innerHTML = "";
 
   genres.forEach((genre) => {
-    const div = document.createElement("div");
+    const div = document.createElement("button");
     div.classList.add("tag");
     div.id = genre.id;
     div.innerText = genre.name;
@@ -79,6 +81,25 @@ function genreSelection() {
     });
   }
 }
+
+//Mostrar y ocultar categorias
+genreShow.addEventListener('click', () => {
+
+  if (tags.style.display = 'none') {
+    tags.style.display = 'flex'
+    genreShow.style.display = 'none'
+    genreHide.style.display = 'flex'
+  }
+})
+
+genreHide.addEventListener('click', () => {
+
+  if (tags.style.display = 'flex') {
+    tags.style.display = 'none'
+    genreShow.style.display = 'flex'
+    genreHide.style.display = 'none'
+  }
+})
 
 //Fetch
 function getMovies(url) {
