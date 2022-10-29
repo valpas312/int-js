@@ -46,7 +46,7 @@ function setGenre() {
       if (selectedGenre.length == 0) {
         selectedGenre.push(genre.id);
       } else {
-        if (selectedGenre.entries(genre.id)) {
+        if (selectedGenre.includes(genre.id)) {
           selectedGenre.forEach((id, idx) => {
             if (id == genre.id) {
               selectedGenre.splice(idx, 1);
@@ -252,7 +252,7 @@ function openOverlay(movie) {
             //Pusheamos al array de los embed el codigo embed de Youtube
             videoEmbed.push(`
             <iframe 
-            width="560"
+            width="50%"
             height="315"
             src="https://www.youtube.com/embed/${key}"
             title="${name}"

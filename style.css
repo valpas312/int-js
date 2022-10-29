@@ -317,4 +317,8 @@ main {
   .logo{
     font-size: 1rem;
   }
+
+  iframe{
+    width: 100%;
+  }
 }
