@@ -204,7 +204,7 @@ main {
   display: flex;
 }
 
-.tag:hover {
+.tag:hover{
   cursor: pointer;
   background-color: var(--secondary);
   transform: scale(1.2);
@@ -322,7 +322,8 @@ main {
     width: 100%;
   }
 
-  .tag:hover{
-    transform: none
+  .tag:focus{
+    background-color: var(--secondary);
+    transform: none;
   }
 }
