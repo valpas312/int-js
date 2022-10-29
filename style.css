@@ -292,7 +292,7 @@ main {
 }
 
 /* Unico MediaQuery */
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   #search:focus {
     transform: none;
   }
@@ -320,5 +320,9 @@ main {
 
   iframe{
     width: 100%;
+  }
+
+  .tag:hover{
+    transform: scale(1);
   }
 }
