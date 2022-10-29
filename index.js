@@ -19,7 +19,7 @@ const next = document.getElementById("next");
 const current = document.getElementById("current");
 
 //Overlay
-const overlayContent = document.getElementById('overlayContent')
+const overlayContent = document.getElementById("overlayContent");
 
 let currentPage;
 let nextPage;
@@ -107,7 +107,7 @@ function getMovies(url) {
 
       tags.scrollIntoView({ behavior: "smooth" });
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 //Funcion para renderizar html
@@ -224,12 +224,12 @@ function openOverlay(movie) {
         document.getElementById("overlay").style.width = "100%";
         if (videoData.results) {
           let videoEmbed = [];
-          videoData.results.forEach(video => {
+          videoData.results.forEach((video) => {
             //El endpoint de name esta obsoleto en la API
-            console.log('El endpoint de name esta obsoleto en la API')
-            let {name, key} = video
-              //Pusheamos al array de los embed el codigo embed de Youtube
-              videoEmbed.push(`
+            console.log("El endpoint de name esta obsoleto en la API");
+            let { name, key } = video;
+            //Pusheamos al array de los embed el codigo embed de Youtube
+            videoEmbed.push(`
             <iframe 
             width="560"
             height="315"
@@ -244,11 +244,11 @@ function openOverlay(movie) {
             picture-in-picture"
             allowfullscreen>
             </iframe>
-            `); 
+            `);
           });
-          overlayContent.innerHTML = videoEmbed.toString()
-        } 
-        console.log(overlayContent.innerHTML)
+          overlayContent.innerHTML = videoEmbed.toString();
+        }
+        console.log(overlayContent.innerHTML);
       }
     });
 }
@@ -256,4 +256,11 @@ function openOverlay(movie) {
 //Estilo para cerrar el overlay
 function closeNav() {
   document.getElementById("overlay").style.width = "0%";
+  //Codigo encontrado para pausar el trailer
+  const iframes = document.getElementsByTagName('iframe');
+    if (iframes !== null) {
+      for (let i = 0; i < iframes.length; i++) {
+        iframes[i].src = iframes[i].src; //causes a reload so it stops playing, music, video, etc.
+      }
+    }
 }
