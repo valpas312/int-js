@@ -13,9 +13,11 @@
     <script src="https://kit.fontawesome.com/81aceb480e.js" crossorigin="anonymous"></script>
     <script src="assets/generosArray.js"></script>
 </head>
+
 <body>
+    <!-- Buscador -->
     <header>
-        <p class="logo">Valpas Movies</p>
+        <a href="#search" class="logo">Valpas Movies</a>
         <form id="form">
             <input type="text" placeholder="Search..." id="search">
             <summary>
@@ -23,13 +25,25 @@
             </summary>
         </form>
     </header>
+
+    <h2>Search by category</h2>
+
     <div id="tags">
         <!-- Tags con los generos -->
     </div>
+
     <h1 class="title">Most popular movies</h1>
+
     <main id="main">
         <!-- Cards renderizadas con js -->
     </main>
+
+    <!-- Paginacion -->
+    <div class="pagination">
+        <div class="page" id="prev">Previous page</div>
+        <div class="current" id="current"></div>
+        <div class="page" id="next">Next page</div>
+    </div>
 </body>
 
 </html>
