@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
     <script defer src="index.js"></script>
     <script src="https://kit.fontawesome.com/81aceb480e.js" crossorigin="anonymous"></script>
     <script src="assets/generosArray.js"></script>
@@ -32,6 +34,16 @@
         <!-- Tags con los generos -->
     </div>
 
+    <div id="overlay" class="overlay">
+
+        <!-- Boton para cerrar overlay -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+
+        <!-- Contenido del overlay -->
+        <div class="overlayContent" id="overlayContent">
+        </div>
+    </div>
+
     <h1 class="title">Most popular movies</h1>
 
     <main id="main">
@@ -45,5 +57,4 @@
         <div class="page" id="next">Next page</div>
     </div>
 </body>
-
 </html>

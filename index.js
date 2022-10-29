@@ -18,6 +18,9 @@ const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const current = document.getElementById("current");
 
+//Overlay
+const overlayContent = document.getElementById('overlayContent')
+
 let currentPage;
 let nextPage;
 let prevPage;
@@ -102,8 +105,9 @@ function getMovies(url) {
         next.classList.remove("remove");
       }
 
-      tags.scrollIntoView({behavior : "smooth"})
-    });
+      tags.scrollIntoView({ behavior: "smooth" });
+    })
+    .catch(err => console.error(err));
 }
 
 //Funcion para renderizar html
@@ -111,7 +115,8 @@ const showMovies = (data) => {
   main.innerHTML = "";
 
   data.forEach((movie) => {
-    const { title, backdrop_path, vote_average, overview, poster_path } = movie;
+    const { title, backdrop_path, vote_average, overview, poster_path, id } =
+      movie;
     const movieRender = document.createElement("div");
     movieRender.classList.add("movie");
     movieRender.innerHTML = `
@@ -124,11 +129,18 @@ const showMovies = (data) => {
             </div>
 
             <div class="overview">
+            <h3>Overview</h3>
                 ${overview}
+                <button class="knowMore" id="${id}">Know more</button>
             </div>
         `;
 
     main.appendChild(movieRender);
+
+    document.getElementById(id).addEventListener("click", () => {
+      console.log(id);
+      openOverlay(movie);
+    });
   });
 };
 
@@ -175,8 +187,10 @@ next.addEventListener("click", () => {
   }
 });
 
-//Funcion para llamados a la API segun paginacion
+//Funcion para llamados a la API segun la pagina
 function pageCall(page) {
+  //Modificacion de la URL
+
   let urlSplit = lastUrl.split("?");
   let queryParams = urlSplit[1].split("&");
 
@@ -195,4 +209,51 @@ function pageCall(page) {
     let url = urlSplit[0] + "?" + nextQuery;
     getMovies(url);
   }
+}
+
+//Overlay
+function openOverlay(movie) {
+  let MOVIE_ID = movie.id;
+
+  //Fetch y forEach para renderizar Overlay
+  fetch(BASE_URL + "/movie/" + MOVIE_ID + "/videos?" + API_KEY)
+    .then((res) => res.json())
+    .then((videoData) => {
+      console.log(videoData);
+      if (videoData) {
+        document.getElementById("overlay").style.width = "100%";
+        if (videoData.results) {
+          let videoEmbed = [];
+          videoData.results.forEach(video => {
+            //El endpoint de name esta obsoleto en la API
+            console.log('El endpoint de name esta obsoleto en la API')
+            let {name, key} = video
+              //Pusheamos al array de los embed el codigo embed de Youtube
+              videoEmbed.push(`
+            <iframe 
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/${key}"
+            title="${name}"
+            frameborder="0"
+            allow="accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture"
+            allowfullscreen>
+            </iframe>
+            `); 
+          });
+          overlayContent.innerHTML = videoEmbed.toString()
+        } 
+        console.log(overlayContent.innerHTML)
+      }
+    });
+}
+
+//Estilo para cerrar el overlay
+function closeNav() {
+  document.getElementById("overlay").style.width = "0%";
 }
