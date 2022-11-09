@@ -235,7 +235,7 @@ function pageCall(page) {
   }
 }
 
-//Overlay
+//Overlay o trailer
 function openOverlay(movie) {
   let MOVIE_ID = movie.id;
 
