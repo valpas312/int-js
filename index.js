@@ -45,17 +45,14 @@ function setGenre() {
     div.addEventListener("click", () => {
       if (selectedGenre.length == 0) {
         selectedGenre.push(genre.id);
-      } else {
-        if (selectedGenre.includes(genre.id)) {
+      } else if (selectedGenre.includes(genre.id)) {
           selectedGenre.forEach((id, idx) => {
             if (id == genre.id) {
               selectedGenre.splice(idx, 1);
-            }
+            } 
           });
-        } else {
-          selectedGenre.push(genre.id);
-        }
-      }
+        } else {selectedGenre.push(genre.id);}
+        
       console.log(selectedGenre);
       //Pedimos a la API las peliculas con el genero elegido
       getMovies(API_URL + "&with_genres=" + encodeURI(selectedGenre.join(",")));
@@ -116,7 +113,13 @@ function getMovies(url) {
       nextPage = currentPage + 1;
       prevPage = currentPage - 1;
       totalPages = data.total_pages;
-      showMovies(data.results);
+
+      if (data.total_results === 0) {
+        main.innerHTML = "No results..."
+      } else {
+        showMovies(data.results);
+      }
+
 
       if (currentPage <= 1) {
         prev.classList.add("disabled");
