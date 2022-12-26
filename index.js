@@ -14,6 +14,7 @@ const title = document.querySelector(".title");
 const tags = document.getElementById("tags");
 const genreShow = document.getElementById('genreShow')
 const tag = document.getElementsByClassName('tag')
+const loged = document.getElementById('loged')
 
 //Paginador
 const prev = document.getElementById("prev");
@@ -31,6 +32,15 @@ let totalPages;
 
 getMovies(API_URL);
 
+//Usuario logeado
+
+const user = localStorage.getItem('username');
+
+if (user) {
+  loged.innerHTML = user
+} else {
+  loged.innerHTML = 'Login'
+}
 //Filtrador de generos
 let selectedGenre = [];
 setGenre();
