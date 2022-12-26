@@ -186,7 +186,7 @@ main {
 }
 
 #tags {
-  width: 100vw;
+  width: 60vw;
   display: none;
   justify-content: space-around;
   align-items: center;
