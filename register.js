@@ -5,6 +5,9 @@ form.addEventListener('submit', (e) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
+    //Si existe un usuario y una contraseña, se redirige a la pagina principal
+    //Y se guardan los datos en el localStorage
+    //Si no, se muestra un mensaje de error
     username.length &&  password.length ? (
         window.location.href = 'index.html',
         localStorage.setItem('username', username),
